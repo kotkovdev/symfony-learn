@@ -1,0 +1,33 @@
+version: '3'
+services:
+  php-fpm:
+    container_name: php-fpm
+    build:
+      context: docker/php-fpm
+    volumes:
+      - ./:/var/www
+    environment:
+      XDEBUG_CONFIG: "remote_host=$XDEBUG_HOST remote_enable=$XDEBUG_REMOTE_ENABLE"
+      PHP_IDE_CONFIG: "serverName=localhost"
+  nginx:
+    container_name: nginx
+    build:
+      context: docker/nginx
+    volumes:
+      - ./:/var/www
+    ports:
+      - "80:80"
+    depends_on:
+      - php-fpm
+  db:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_HOST: 127.0.0.1
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    restart: unless-stopped
+    ports:
+    - "5432:5432"
