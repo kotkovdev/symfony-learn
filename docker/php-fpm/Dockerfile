@@ -8,4 +8,6 @@ ADD ./php.ini /usr/local/etc/php/php.ini
 RUN wget https://getcomposer.org/installer -O - -q \
     | php -- --install-dir=/bin --filename=composer --quiet
 
+RUN  wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+
 WORKDIR /var/www
