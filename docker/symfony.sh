@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker exec php-fpm symfony "$@"
+docker exec -it php-fpm symfony "$@"
