@@ -11,6 +11,23 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
+    <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for conference in conferences %}
+                <tr>
+                    <td><a href="{{ path('conference', {id: conference.id}) }}">{{ conference.city }}</a></td>
+                    <td>{{ conference.year }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ '/Users/kotkovdev/Projects/symfony-learn/src/Controller/ConferenceController.php'|file_link(0) }}">src/Controller/ConferenceController.php</a></code></li>
