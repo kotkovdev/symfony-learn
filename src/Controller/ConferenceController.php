@@ -13,20 +13,20 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConferenceController extends AbstractController
 {
     /**
-     * @var \App\Repository\ConferenceRepository
+     * @var ConferenceRepository
      */
     private ConferenceRepository $conferenceRepository;
 
     /**
-     * @var \App\Repository\CommentRepository
+     * @var CommentRepository
      */
     private CommentRepository $commentRepository;
 
     /**
      * ConferenceController constructor.
      *
-     * @param \App\Repository\ConferenceRepository $conferenceRepository
-     * @param \App\Repository\CommentRepository $commentRepository
+     * @param ConferenceRepository $conferenceRepository
+     * @param CommentRepository $commentRepository
      */
     public function __construct(
         ConferenceRepository $conferenceRepository,
@@ -50,10 +50,10 @@ class ConferenceController extends AbstractController
     /**
      * @Route("/conference/{id}", name="conference")
      *
-     * @param \App\Entity\Conference $conference
+     * @param Conference $conference
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return Response
      */
     public function show(Conference $conference, Request $request): Response
     {

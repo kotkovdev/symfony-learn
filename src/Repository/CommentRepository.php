@@ -27,10 +27,10 @@ class CommentRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param \App\Entity\Conference $conference
+     * @param Conference $conference
      * @param int $offset
      *
-     * @return \Doctrine\ORM\Tools\Pagination\Paginator
+     * @return Paginator
      */
     public function getCommentPaginator(Conference $conference, int $offset): Paginator
     {
@@ -44,33 +44,4 @@ class CommentRepository extends ServiceEntityRepository
 
         return new Paginator($query);
     }
-
-    // /**
-    //  * @return Comment[] Returns an array of Comment objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Comment
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
